@@ -1,0 +1,59 @@
+﻿
+@model InterviewTask.Models.Employee
+
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <table class="table">
+        <tr>
+            <th>
+                FileName
+            </th>
+            <th>
+                DownLoad
+            </th>
+        </tr>
+        @foreach (string file in Model.ListOfFiles)
+        {
+            if (file != string.Empty)
+            {
+                <tr>
+                    <td>@file</td>
+                    <td>@Html.ActionLink("Download", "DownloadFile", new { filename = file })</td>
+                </tr>
+            }
+        }
+        <!--<tr>
+            <td>-->
+        @*@if (Model != null)
+            {
+                @Html.DropDownListFor(m => m.FileName, new SelectList(Model.ListOfFiles), "Select Files")
+            }*@
+
+
+
+        <!--</td>
+            <td>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Download" class="btn btn-primary" />
+                    </div>
+                </div>
+
+            </td>
+        </tr>-->
+
+    </table>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
